@@ -28,6 +28,7 @@ class ViewControllerDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //getting the genres of the current movie, and add it to their properties.
         sharedModelManager?.getMoviesGenresFromApi( movieID: movie!.movieID!, completionHandler: {result, error in
             if let result = result{
                 self.movie?.movieCategories = result.results!
@@ -41,6 +42,7 @@ class ViewControllerDetails: UIViewController {
                 print("LOG ERROR: Error loading products: \(error.localizedDescription)")
             }
         })
+        //Also getting the list of videos that the movies has assosiated.
         sharedModelManager?.getVideoFromApi( movieID: movie!.movieID!, completionHandler: {result, error in
             if let result = result{
                 self.movie?.movieTrailerURL = result.results!
@@ -52,6 +54,8 @@ class ViewControllerDetails: UIViewController {
                 print("LOG ERROR: Error loading products: \(error.localizedDescription)")
             }
         })
+        
+        //Seting all the views and components values.
         playButton.layer.cornerRadius = playButton.frame.width / 2.0
         playButton.layer.masksToBounds = true
         showReviewButton.layer.cornerRadius = 20
@@ -66,6 +70,7 @@ class ViewControllerDetails: UIViewController {
         
     }
     
+    //Function that allows to get all the movie's genre's, and return it in a unificated string
     func getCategoryNames(categories: [MovieCategory]) -> String{
         var arrayName : [String] = []
         for var category in categories{
@@ -82,6 +87,8 @@ class ViewControllerDetails: UIViewController {
     @IBAction func showReviewsAction(_ sender: Any) {
         performSegue(withIdentifier: "goToReview", sender: self)
     }
+    
+    //Acction that allows to redirect to the video url(only if the video was fetched)
     @IBAction func goToYoutubeLink(_ sender: Any) {
         if(!(movie?.movieTrailerURL.isEmpty)!){
             if let url = NSURL(string: (sharedModelManager?.youtubeURL)!+(movie?.movieTrailerURL[0].url)!){

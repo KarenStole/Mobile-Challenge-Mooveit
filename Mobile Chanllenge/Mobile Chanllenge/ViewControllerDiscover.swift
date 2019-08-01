@@ -18,6 +18,9 @@ class ViewControllerDiscover: UIViewController {
     @IBOutlet weak var movieCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*Getting all the movies, with each properties, that the Api descover gives
+         In case that an error occurs, an alert is shown
+         */
         sharedModelManager.getMoviesFromApi(completionHandler: {result, error in
             if let result = result{
                 self.listOfMovies = result.results!
@@ -39,6 +42,7 @@ class ViewControllerDiscover: UIViewController {
 
 extension ViewControllerDiscover : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //If there isn't any respose yet from the API, only one row is shown with a "Loading..." message
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(listOfMovies.isEmpty){
             return 1
@@ -47,7 +51,7 @@ extension ViewControllerDiscover : UICollectionViewDelegate, UICollectionViewDat
         }
 
     }
-    
+    //Creating reusable cells for the data from movies array. Images are loades using Kingfisher librery. The release date os the movie, is parsed in order to get only the year
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
         
@@ -56,10 +60,8 @@ extension ViewControllerDiscover : UICollectionViewDelegate, UICollectionViewDat
             cell.movieDateLabel.text = ""
         }
         else{
-           // http://image.tmdb.org/t/p/original/
             let fullDateArr = listOfMovies[indexPath.row].releaseDate!.components(separatedBy: "-")
             cell.movieDateLabel.text = fullDateArr[0]
-            //var firstName: String = fullNameArr[0]
             cell.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/original/\(listOfMovies[indexPath.row].posterImageURL!)"))
             cell.moviePointLabel.text = String(describing: listOfMovies[indexPath.row].voteAvarage!)
             cell.movieTitleLabel.text = listOfMovies[indexPath.row].movieTitle
@@ -69,11 +71,12 @@ extension ViewControllerDiscover : UICollectionViewDelegate, UICollectionViewDat
         
     }
     
+    //Adjusting the layout in order to have two colums
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let padding: CGFloat = 10
         let collectionCellSize = collectionView.frame.size.width - padding
-        return CGSize(width: collectionCellSize/2, height: collectionCellSize*0.70)
+        return CGSize(width: collectionCellSize/2, height: collectionCellSize*0.85)
         
     }
     

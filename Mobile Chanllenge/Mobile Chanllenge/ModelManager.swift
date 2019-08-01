@@ -22,6 +22,7 @@ class ModelManager {
     private init(){
     }
     
+    //Get all the movies form the discover endpoint of the API. All object, such as Movie and APIResponseDescover are mappable with the api's response.
     func getMoviesFromApi( completionHandler: @escaping ( APIResponseDescover?, Error?) -> Void) {
         let finalURL = "\(ModelManager.sharedModelManager.movieDescoveryURL)?api_key=\(ModelManager.sharedModelManager.apyKey)"
         print("Request to: \(finalURL)")
@@ -39,6 +40,7 @@ class ModelManager {
         }
     }
     
+    //Get the list of generes of a movies form the movie endpoint of the API. In discovery api, there are a lot of properties that are the same. So i need only the generes names.
     func getMoviesGenresFromApi( movieID: Int, completionHandler: @escaping ( APIResponseDetails?, Error?) -> Void) {
         let finalURL = "\(ModelManager.sharedModelManager.movieDetailsURL)/\(movieID)?api_key=\(ModelManager.sharedModelManager.apyKey)"
         print("Request to: \(finalURL)")
@@ -56,6 +58,7 @@ class ModelManager {
         }
     }
     
+    //Get the list of reviews of a movies form the reviews endpoint of the API in english.
     func getReviewsFromApi( movieID: Int, completionHandler: @escaping ( APIResponseReview?, Error?) -> Void) {
         let finalURL = "\(ModelManager.sharedModelManager.movieDetailsURL)/\(movieID)/reviews?api_key=\(ModelManager.sharedModelManager.apyKey)&language=en-US&page=1"
         print("Request to: \(finalURL)")
@@ -73,6 +76,7 @@ class ModelManager {
         }
     }
     
+    //This is an extra resourse that i found in the api documentation, in order to take the movies trailer's ids and make an url to youtube.
     func getVideoFromApi( movieID: Int, completionHandler: @escaping ( APIResponseVideo?, Error?) -> Void) {
         let finalURL = "\(ModelManager.sharedModelManager.movieDetailsURL)/\(movieID)/videos?api_key=\(ModelManager.sharedModelManager.apyKey)&language=en-US"
         print("Request to: \(finalURL)")

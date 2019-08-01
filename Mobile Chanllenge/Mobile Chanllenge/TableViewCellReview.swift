@@ -18,6 +18,7 @@ class TableViewCellReview: UITableViewCell {
     @IBOutlet weak var userReviewLabel: UILabel!
     
     override func layoutSubviews() {
+        //Making the round style for the avatar image
         userImageview.layer.cornerRadius = userImageview.frame.width / 2.0
         userImageview.layer.masksToBounds = true
     }

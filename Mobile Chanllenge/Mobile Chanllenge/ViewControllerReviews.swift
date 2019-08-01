@@ -22,6 +22,7 @@ class ViewControllerReviews: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Set a dinamic dimension of the cell, depending on the large of the review text
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/original/\(movie!.posterImageURL!)"))
@@ -29,6 +30,7 @@ class ViewControllerReviews: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Getting the reviews from the Api
         sharedModelManager.getReviewsFromApi(movieID: movie!.movieID!, completionHandler: {result, error in
             if let result = result{
                 self.reviews = result.results!
@@ -49,10 +51,15 @@ class ViewControllerReviews: UIViewController {
 
 }
 extension ViewControllerReviews: UITableViewDataSource, UITableViewDelegate {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //If there is no response from the api yet
         if (reviews.isEmpty && !stillEmpty){
             return 1
-        }else if(stillEmpty){
+        }
+        //In the apis give us a response, but there is no reviews
+        else if(stillEmpty){
             return 0
         }else{
             return reviews.count
