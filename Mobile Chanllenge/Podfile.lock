@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - Cosmos (19.0.3)
+  - Kingfisher (5.4.0)
+  - ObjectMapper (3.4.2)
+
+DEPENDENCIES:
+  - AlamofireObjectMapper (= 5.2)
+  - Cosmos (~> 19.0)
+  - Kingfisher
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Cosmos
+    - Kingfisher
+    - ObjectMapper
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+
+PODFILE CHECKSUM: 5d9d732e001c82aea722bd2115c90ea747a9826a
+
+COCOAPODS: 1.6.1

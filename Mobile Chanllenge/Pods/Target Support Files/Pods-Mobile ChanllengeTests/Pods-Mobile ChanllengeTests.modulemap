@@ -1,0 +1,6 @@
+framework module Pods_Mobile_ChanllengeTests {
+  umbrella header "Pods-Mobile ChanllengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
