@@ -1,5 +1,7 @@
-# Mobile Coding Challenge
+# Mobile Coding Challenge - Swift 4 - Tested in IPhone XR and X model
 The goal of this challenge is to give you an opportunity to show us what you know and how you would work in a real-life project with real-life behaviours.
+
+**Code is documented with comments on it
 
 ## Introduction
 Your local movie theater wants to make things a bit more interesting to attract the younger audience.
@@ -16,6 +18,10 @@ The key features of the application will be:
 ### 1. Discover
 After opening the app, users should be able to see a list of movies suggested by the app sorted by popularity.
 
+**As far i understand, that the order must be according the avarage voter param of the movie, y an desc order. To see the movie details 
+**To see de movie details just touch each movie
+
+
 - API endpoint: https://developers.themoviedb.org/3/discover/movie-discover
 - Design reference (available on assets folder):
 
@@ -25,6 +31,9 @@ After opening the app, users should be able to see a list of movies suggested by
 ### 2. Movie details
 Users should be able to access the details of the movies displayed on the discover section.
 
+**You can see all the movie information as it is in the image below
+**To see the movie review just click on the "Show Review"'s buton. Also you can watch the movie trailer by clicking on the play's button, which redirect you to a youbtube's link in the browser
+
 - API endpoint: https://developers.themoviedb.org/3/movies/get-movie-details
 - Design reference (available on assets folder):
 
@@ -33,6 +42,9 @@ Users should be able to access the details of the movies displayed on the discov
 ### 3. Movie reviews
 Users should be able to see a list of user reviews for a specific movie.
 
+**List all the users reviews about the movie.
+**The API dose not provide user avatar/photo to be shown, instead i select a default image
+
 - API endpoint: https://developers.themoviedb.org/3/movies/get-movie-reviews
 - Design reference (available on assets folder):
 
@@ -40,6 +52,8 @@ Users should be able to see a list of user reviews for a specific movie.
 
 ### 4. Offline mode
 The app should be usable offline. Whenever there's no internet, the app should show the latest data that was recieved. Nevertheless, data should have an expiration date. If the latest data was fetched more than a day ago, it shouldn't be used and no data should be shown. This expiration date should be easily changeable, in order to be able to test it/update it. 
+
+**I have no experience about this topic :( but i will search it!
 
 ## Deliverables
 
